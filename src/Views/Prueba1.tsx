@@ -1,50 +1,27 @@
 import React from "react";
-import usePrueba1 from "../Hooks/usePrueba1";
 import { NavLink } from "react-router-dom";
+import Error from "../Components/Error";
+import Form from "../Components/Form";
+import usePruebas from "../Hooks/usePruebas";
 
 const Prueba1 = () => {
-  const { value, setvalue, validateValue, error, Fibonacci } = usePrueba1();
+  const { value, setvalue, tryDraw, error, Fibonacci } = usePruebas();
 
   return (
-    <div>
-      <div className="d-flex align-items-center">
-        <NavLink to="/" className="btn btn-dark me-2 ">
+    <div className="prueba1-container">
+      <div>
+        <NavLink to="/" className="btn ">
           Atras
         </NavLink>
 
-        <h2>Ejercicio 1</h2>
+        <h4>Ejercicio 1</h4>
       </div>
-      <div className="form-container row">
-        <div className="col-md-6">
-          <label htmlFor="num" className="form-label">
-            Número entero
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="num"
-            placeholder="Ingresa número entero"
-            value={value}
-            onChange={(e) => {
-              setvalue(e.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-6 d-flex align-items-end">
-          <button className="btn btn-success" onClick={validateValue}>
-            Mostrar
-          </button>
-        </div>
-        {error && (
-          <div className="col-md-6 mt-2">
-            <div className="alert alert-danger" role="alert">
-              El valor escrito debe ser mayor a 1.
-            </div>
-          </div>
-        )}
-      </div>
+
+      <Form value={value} action={tryDraw} setvalue={setvalue} />
+
       <div className="row">
-        <div className="col-md-6 p-3">{Fibonacci}</div>
+        <Error error={error} />
+        <div className="col m6 p-3">{Fibonacci}</div>
       </div>
     </div>
   );
