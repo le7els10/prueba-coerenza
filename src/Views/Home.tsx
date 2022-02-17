@@ -14,6 +14,9 @@ const Home = () => {
             Ir a prueba 2 (multiplos de 3 por la palabra AKE)
           </NavLink>
         </li>
+        <li className="collection-item">
+          <NavLink to="/movies">Peliculas</NavLink>
+        </li>
       </ul>
     </div>
   );

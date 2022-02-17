@@ -8,7 +8,7 @@ const Prueba2 = () => {
   const { value, setvalue, tryDrawMultiplos, error, Multiplos } = usePruebas();
 
   return (
-    <div className="prueba2-container">
+    <div className="prueba2-container container ">
       <div>
         <NavLink to="/" className="btn  ">
           Atras

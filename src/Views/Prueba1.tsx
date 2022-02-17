@@ -8,7 +8,7 @@ const Prueba1 = () => {
   const { value, setvalue, tryDraw, error, Fibonacci } = usePruebas();
 
   return (
-    <div className="prueba1-container">
+    <div className="prueba1-container container ">
       <div>
         <NavLink to="/" className="btn ">
           Atras
