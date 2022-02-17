@@ -118,6 +118,13 @@ $light-gray: #c4c4c4;
 
         .order-container--button--img {
           margin-left: 11px;
+          transition: all 0.3s ease;
+
+          &.active {
+            img {
+              transform: rotate(90deg);
+            }
+          }
         }
       }
 
@@ -125,7 +132,7 @@ $light-gray: #c4c4c4;
         position: absolute;
         left: 0;
         top: 43px;
-        display: none;
+        z-index: 1;
 
         padding-top: 19px;
         padding-bottom: 17px;
@@ -143,6 +150,7 @@ $light-gray: #c4c4c4;
           padding: 7px 31px;
 
           .option--label {
+            cursor: pointer;
             font-size: 16px;
             font-weight: 400;
             color: #6d6e70;
@@ -155,6 +163,10 @@ $light-gray: #c4c4c4;
 
         .mt {
           margin-top: 16px;
+        }
+
+        &.hidden {
+          display: none;
         }
 
         &::before {
@@ -217,6 +229,52 @@ $light-gray: #c4c4c4;
               color: #6d6e70;
               font-weight: 800;
             }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 1.5rem;
+    .menu-container {
+      .form-container {
+        margin-bottom: 10px;
+        width: 100%;
+        .form-container--input {
+          min-width: auto;
+        }
+      }
+      .filter-container {
+        .filter-container--checkboxes {
+          left: 0;
+          right: auto;
+
+          &:before {
+            right: auto;
+          }
+        }
+      }
+
+      .order-container {
+        .order-container--options {
+        }
+      }
+    }
+    .cards-container {
+      .card {
+        .card--title {
+          text-align: center;
+        }
+        .card--image {
+          margin: auto;
+        }
+
+        .card--sinopsis {
+          max-width: none;
+
+          .card--text {
+            margin: 15px 0;
           }
         }
       }

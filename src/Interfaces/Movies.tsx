@@ -3,6 +3,7 @@ export interface Movies {
   images_url: string;
   genres: Genre[];
   results: Result[];
+  error?: string;
 }
 
 export interface Genre {
