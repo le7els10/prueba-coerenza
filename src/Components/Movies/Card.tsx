@@ -1,5 +1,6 @@
 import React from "react";
 import { Result } from "../../Interfaces/Movies";
+import Stars from "./Stars";
 
 interface Props {
   movie: Result;
@@ -21,7 +22,7 @@ const Card = ({ movie }: Props) => {
           </p>
           <p className="card--vars">
             <span>Calificación: </span>
-            TODO
+            <Stars puntuation={movie.vote_average} />
           </p>
           <p className="card--vars">
             <span>Genero: </span>

@@ -73,18 +73,25 @@ $light-gray: #c4c4c4;
         position: absolute;
         right: 0;
         top: 50px;
-        display: none;
+        z-index: 1;
 
-        padding: 19px 31px 16px;
+        padding: 19px 5px 16px 31px;
         min-width: 204px;
         background-color: #efefef;
         border-radius: 9px;
         box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 
         .checkboxes {
+          max-height: 342px;
+          overflow-y: scroll;
           .checkboxes--item {
+            padding: 6px 0 9px;
             display: block;
           }
+        }
+
+        &.hidden {
+          display: none;
         }
 
         &::before {

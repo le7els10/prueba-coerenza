@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Components/Movies/Card";
-import GendersCheck from "../Components/Movies/GendersCheck";
+import GendersComponent from "../Components/Movies/GendersComponent";
+import Loading from "../Components/Movies/Loading";
 import useMovies from "../Hooks/useMovies";
 const searchIcon = require("../Assets/Icons/Vector.png");
-const filterIcon = require("../Assets/Icons/FilterIcon.png");
 const arrowIcon = require("../Assets/Icons/ArrowIcon.png");
 
 const Movies = () => {
-  const { currentMovies } = useMovies();
+  const { currentMovies, error, getMovies, Genders, IsLoading } = useMovies();
+
+  useEffect(() => {
+    getMovies();
+  }, []);
 
   return (
     <div className="movies-view">
@@ -20,24 +24,7 @@ const Movies = () => {
             <img src={searchIcon} alt="search" />
           </button>
         </div>
-        <div className="filter-container">
-          <button className="filter-container--button">
-            <img src={filterIcon} alt="filter" />
-          </button>
-          <div className="filter-container--checkboxes">
-            <h5>Genero</h5>
-            <div className="checkboxes">
-              <GendersCheck name="Drama" />
-              <GendersCheck name="Aventura" />
-              <GendersCheck name="Acción" />
-              <GendersCheck name="Fantasía" />
-              <GendersCheck name="Comedia" />
-              <GendersCheck name="Romance" />
-              <GendersCheck name="Suspenso" />
-              <GendersCheck name="Crimen" />
-            </div>
-          </div>
-        </div>
+        <GendersComponent getMovies={getMovies} Genders={Genders} />
         <div className="order-container">
           <button className="order-container--button">
             Ordenar
@@ -78,12 +65,21 @@ const Movies = () => {
           </div>
         </div>
       </div>
-
-      <div className="cards-container">
-        {currentMovies.map((movie) => (
-          <Card movie={movie} />
-        ))}
-      </div>
+      {IsLoading ? (
+        <Loading />
+      ) : (
+        <div className="cards-container">
+          {error && (
+            <p>
+              ha ocurrido un error con el servidor node, es posible que el
+              servidor aun no se ha inicializado.
+            </p>
+          )}
+          {currentMovies.map((movie, index) => (
+            <Card key={index} movie={movie} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
