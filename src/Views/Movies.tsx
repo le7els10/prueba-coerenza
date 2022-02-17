@@ -1,10 +1,14 @@
 import React from "react";
+import Card from "../Components/Movies/Card";
 import GendersCheck from "../Components/Movies/GendersCheck";
+import useMovies from "../Hooks/useMovies";
 const searchIcon = require("../Assets/Icons/Vector.png");
 const filterIcon = require("../Assets/Icons/FilterIcon.png");
 const arrowIcon = require("../Assets/Icons/ArrowIcon.png");
 
 const Movies = () => {
+  const { currentMovies } = useMovies();
+
   return (
     <div className="movies-view">
       <h1>Peliculas</h1>
@@ -73,6 +77,12 @@ const Movies = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="cards-container">
+        {currentMovies.map((movie) => (
+          <Card movie={movie} />
+        ))}
       </div>
     </div>
   );
